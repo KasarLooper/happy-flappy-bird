@@ -13,6 +13,11 @@ public class Background {
         this.screenHeight = screenHeight;
     }
 
+    public void update(int screenWidth, int screenHeight) {
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
+    }
+
     public void draw(Batch batch) {
         batch.draw(texture, 0, 0, screenWidth, screenHeight);
     }
