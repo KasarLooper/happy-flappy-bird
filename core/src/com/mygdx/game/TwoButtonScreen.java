@@ -12,7 +12,7 @@ public class TwoButtonScreen implements Screen {
 	private SpriteBatch batch;
 	private Button playButton;
 	private Button exitButton;
-	private Background background;
+	private Texture background;
 	private int distanceBetweenButtons;
 	private OrthographicCamera camera;
 	private String playText;
@@ -30,7 +30,7 @@ public class TwoButtonScreen implements Screen {
 		camera = game.getCamera();
 		batch = game.getBatch();
 
-		background = new Background("background/restart_bg.png", Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		background = new Texture("background/restart_bg.png");
 		distanceBetweenButtons = 100;
 		initPlayButton();
 		initExitButton();
@@ -76,7 +76,7 @@ public class TwoButtonScreen implements Screen {
 
 		batch.begin();
 
-		background.draw(batch);
+		batch.draw(background, 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		playButton.draw(batch);
 		exitButton.draw(batch);
 
@@ -93,7 +93,6 @@ public class TwoButtonScreen implements Screen {
 	@Override
 	public void resize(int width, int height) {
 		camera.setToOrtho(false, width, height);
-		background.update(width, height);
 
 		playButtonX = (Gdx.graphics.getWidth() - playButtonWidth) / 2;
 		playButtonY = (Gdx.graphics.getHeight() + distanceBetweenButtons) / 2;
