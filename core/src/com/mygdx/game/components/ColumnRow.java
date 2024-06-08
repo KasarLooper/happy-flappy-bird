@@ -44,4 +44,11 @@ public class ColumnRow {
         for (Column col : columns)
             col.dispose();
     }
+
+    public boolean isPassedColumn() {
+        for (Column col : columns)
+            if (col.isAfterColumn())
+                return true;
+        return false;
+    }
 }

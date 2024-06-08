@@ -10,6 +10,7 @@ public class Column {
     private int x;
     private int upY, downY;
     private int width, height;
+    private boolean isPassed;
 
     public Column(int x) {
         this.x = x;
@@ -22,6 +23,7 @@ public class Column {
         int centY = Gdx.graphics.getHeight() / 2;
         upY = centY + ColumnConstants.INTERVAL_HEIGHT / 2;
         downY = upY - ColumnConstants.INTERVAL_HEIGHT - height;
+        isPassed = false;
 
         int range = Math.min(downY + height - ColumnConstants.UP_PART_HEIGHT, height - (upY - ColumnConstants.INTERVAL_HEIGHT));
         int randomDef = ((int) (Math.random() * range)) * 2 - range;
@@ -36,6 +38,8 @@ public class Column {
 
     public void move(int speed) {
         x -= speed;
+        if (isOutScreen())
+            isPassed = false;
     }
 
     public boolean isOutScreen() {
@@ -49,5 +53,13 @@ public class Column {
     public void dispose() {
         up.dispose();
         down.dispose();
+    }
+
+    public boolean isAfterColumn() {
+        if (ColumnConstants.BIRD_X >= x + width && !isPassed) {
+            isPassed = true;
+            return true;
+        }
+        return false;
     }
 }
