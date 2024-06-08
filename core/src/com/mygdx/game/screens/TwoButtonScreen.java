@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.game.FlappyBirdGame;
+import com.mygdx.game.components.Button;
 
 public class TwoButtonScreen implements Screen {
 	private FlappyBirdGame game;
@@ -79,7 +81,6 @@ public class TwoButtonScreen implements Screen {
 		batch.draw(background, 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		playButton.draw(batch);
 		exitButton.draw(batch);
-
 		batch.end();
 	}
 

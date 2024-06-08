@@ -1,11 +1,15 @@
-package com.mygdx.game;
+package com.mygdx.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.game.FlappyBirdGame;
+import com.mygdx.game.components.Column;
+import com.mygdx.game.components.ColumnConstants;
+import com.mygdx.game.components.ColumnRow;
+import com.mygdx.game.components.MovingBackground;
 
 public class GameScreen implements Screen {
 
@@ -13,6 +17,7 @@ public class GameScreen implements Screen {
     private final OrthographicCamera camera;
     private MovingBackground background;
     private SpriteBatch batch;
+    private ColumnRow columnRow;
 
     public GameScreen(FlappyBirdGame game) {
         this.game = game;
@@ -22,7 +27,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        background = new MovingBackground("background/game_bg.png", -2);
+        background = new MovingBackground("background/game_bg.png", ColumnConstants.BACKGROUND_SPEED);
+        columnRow = new ColumnRow(ColumnConstants.COLUMNS_SPEED, ColumnConstants.DISTANCE_BETWEEN_COLUMNS, ColumnConstants.FIRST_COLUMN_X);
     }
 
     @Override
@@ -33,11 +39,8 @@ public class GameScreen implements Screen {
 
         batch.begin();
         background.draw(batch);
+        columnRow.draw(batch);
         batch.end();
-
-        if (Gdx.input.justTouched()) {
-            System.out.printf("(%d, %d)", Gdx.input.getX(), Gdx.input.getY());
-        }
     }
 
     @Override
@@ -63,5 +66,6 @@ public class GameScreen implements Screen {
     public void dispose() {
         batch.dispose();
         background.dispose();
+        columnRow.dispose();
     }
 }

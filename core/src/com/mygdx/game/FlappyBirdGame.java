@@ -3,7 +3,10 @@ package com.mygdx.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.screens.GameScreen;
+import com.mygdx.game.screens.TwoButtonScreen;
 
 public class FlappyBirdGame extends Game {
     private SpriteBatch batch;

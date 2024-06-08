@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.components;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -20,7 +20,6 @@ public class MovingBackground {
     }
 
     public void update(int width, int height) {
-        System.out.printf("(%d, %d)\n", width, height);
     }
 
     public void draw(Batch batch) {
@@ -32,8 +31,8 @@ public class MovingBackground {
         batch.draw(texture1, x1, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.draw(texture2, x2, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        x1 += speed;
-        x2 += speed;
+        x1 -= speed;
+        x2 -= speed;
     }
 
     public void dispose() {

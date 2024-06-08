@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.components;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -43,8 +43,6 @@ public class Button {
 
         textX = x + (width - textWidth) / 2;
         textY = upY - (height - textHeight) / 2;
-
-        System.out.printf("%s x: %d - %d; y: %d - %d\n", text, x, writeX, y, upY);
     }
 
     public void draw(Batch batch) {
@@ -54,7 +52,6 @@ public class Button {
         if (Gdx.input.justTouched()) {
             int x = Gdx.input.getX();
             int y = Gdx.graphics.getHeight() - Gdx.input.getY();
-            System.out.printf("(%d, %d) was pressed\n", x, y);
             if (x <= writeX && x >= this.x && y <= upY && y >= this.y)
                 onClick.run();
         }
