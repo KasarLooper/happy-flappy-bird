@@ -20,7 +20,7 @@ public class GameScreen implements Screen {
     private SpriteBatch batch;
     private ColumnRow columnRow;
     private Bird bird;
-    private int points;
+    private int points = 0;
     private BitmapFont scoreText;
     private GlyphLayout gl;
     private int textX, textY;
@@ -54,6 +54,9 @@ public class GameScreen implements Screen {
         ScreenUtils.clear(0, 0, 0, 0);
         camera.update();
         batch.setProjectionMatrix(camera.combined);
+
+        if (bird.isAbroad())
+            game.onLose();
 
         if (columnRow.isPassedColumn())
             points++;
@@ -99,5 +102,9 @@ public class GameScreen implements Screen {
     private boolean isOverTen(int n) {
         if (n == 0) return true;
         return (n % 10 == 0 && isOverTen(n / 10));
+    }
+
+    public int getPoints() {
+        return points;
     }
 }

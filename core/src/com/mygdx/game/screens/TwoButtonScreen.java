@@ -11,11 +11,11 @@ import com.mygdx.game.components.Button;
 
 public class TwoButtonScreen implements Screen {
 	private FlappyBirdGame game;
-	private SpriteBatch batch;
+	protected SpriteBatch batch;
 	private Button playButton;
 	private Button exitButton;
 	private Texture background;
-	private int distanceBetweenButtons;
+	protected int distanceBetweenButtons;
 	private OrthographicCamera camera;
 	private String playText;
 	private Runnable onClickPlay;
@@ -40,12 +40,14 @@ public class TwoButtonScreen implements Screen {
 
 	private Texture playButtonBg;
 	private int playButtonWidth;
+	protected int playButtonHeight;
 	private int playButtonX;
-	private int playButtonY;
+	protected int playButtonY;
 
 	private void initPlayButton() {
 		playButtonBg = new Texture("button/button_bg.png");
 		playButtonWidth = playButtonBg.getWidth();
+		playButtonHeight = playButtonBg.getHeight();
 		playButtonX = (Gdx.graphics.getWidth() - playButtonWidth) / 2;
 		playButtonY = (Gdx.graphics.getHeight() + distanceBetweenButtons) / 2;
 		playButton = new Button(playText, playButtonX, playButtonY, playButtonBg, onClickPlay);
@@ -53,9 +55,9 @@ public class TwoButtonScreen implements Screen {
 
 	private Texture exitButtonBg;
 	private int exitButtonWidth;
-	int exitButtonHeight;
-	int exitButtonX;
-	int exitButtonY;
+	private int exitButtonHeight;
+	private int exitButtonX;
+	private int exitButtonY;
 
 	private void initExitButton() {
 		exitButtonBg = new Texture("button/exit_button_bg.png");
@@ -79,9 +81,13 @@ public class TwoButtonScreen implements Screen {
 		batch.begin();
 
 		batch.draw(background, 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		draw();
+		batch.end();
+	}
+
+	protected void draw() {
 		playButton.draw(batch);
 		exitButton.draw(batch);
-		batch.end();
 	}
 
 	@Override

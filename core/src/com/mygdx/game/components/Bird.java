@@ -1,6 +1,7 @@
 package com.mygdx.game.components;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 
@@ -50,9 +51,12 @@ public class Bird {
             isPressed = false;
             a = -ColumnConstants.GRAVITY;
         }
-
         speed += a;
         y += speed;
+    }
+
+    public boolean isAbroad() {
+        return y < 0 || y + frames[currentFrame].getHeight() > Gdx.graphics.getHeight();
     }
 
     public void dispose() {
