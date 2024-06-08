@@ -57,6 +57,8 @@ public class GameScreen implements Screen {
 
         if (bird.isAbroad())
             game.onLose();
+        if (columnRow.isCollapse(bird.getX(), bird.getY(), bird.getWidth(), bird.getHeight()))
+            game.onLose();
 
         if (columnRow.isPassedColumn())
             points++;

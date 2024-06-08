@@ -62,4 +62,8 @@ public class Column {
         }
         return false;
     }
+
+    public boolean isCollapse(int x, int y, int width, int height) {
+        return x >= this.x && x <= this.x + width && (y + height >= upY || y <= downY + down.getHeight());
+    }
 }

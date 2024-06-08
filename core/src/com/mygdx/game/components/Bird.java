@@ -63,4 +63,20 @@ public class Bird {
         for (Texture frame : frames)
             frame.dispose();
     }
+
+    public int getX() {
+        return (int) x;
+    }
+
+    public int getY() {
+        return (int) y;
+    }
+
+    public int getWidth() {
+        return frames[currentFrame].getWidth();
+    }
+
+    public int getHeight() {
+        return frames[currentFrame].getHeight();
+    }
 }

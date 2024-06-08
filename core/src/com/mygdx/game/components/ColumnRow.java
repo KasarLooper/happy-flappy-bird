@@ -51,4 +51,10 @@ public class ColumnRow {
                 return true;
         return false;
     }
+
+    public boolean isCollapse(int x, int y, int width, int height) {
+        for (Column col : columns)
+            if (col.isCollapse(x, y, width, height)) return true;
+        return false;
+    }
 }
